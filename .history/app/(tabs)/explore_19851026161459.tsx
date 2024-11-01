@@ -1,5 +1,6 @@
-import React from 'react';
-import { StyleSheet, Image, Platform, TouchableOpacity } from 'react-native';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { StyleSheet, Image, Platform } from 'react-native';
+
 import { Collapsible } from '@/components/Collapsible';
 import { ExternalLink } from '@/components/ExternalLink';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
@@ -9,19 +10,12 @@ import { ThemedView } from '@/components/ThemedView';
 export default function TabTwoScreen() {
   return (
     <ParallaxScrollView
-      headerBackgroundColor={{ light: '#ffffff', dark: '#ffffff' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/Plotwise.png')} // Replace with your image path
-          style={styles.headerImage}
-        />
-      }
-    >
+      headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
+      headerImage={<Ionicons size={310} name="code-slash" style={styles.headerImage} />}>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">About Us</ThemedText>
+        <ThemedText type="title">Explore</ThemedText>
       </ThemedView>
       <ThemedText>This app includes example code to help you get started.</ThemedText>
-
       <Collapsible title="File-based routing">
         <ThemedText>
           This app has two screens:{' '}
@@ -36,29 +30,23 @@ export default function TabTwoScreen() {
           <ThemedText type="link">Learn more</ThemedText>
         </ExternalLink>
       </Collapsible>
-
       <Collapsible title="Android, iOS, and web support">
         <ThemedText>
           You can open this project on Android, iOS, and the web. To open the web version, press{' '}
           <ThemedText type="defaultSemiBold">w</ThemedText> in the terminal running this project.
         </ThemedText>
       </Collapsible>
-
       <Collapsible title="Images">
         <ThemedText>
           For static images, you can use the <ThemedText type="defaultSemiBold">@2x</ThemedText> and{' '}
           <ThemedText type="defaultSemiBold">@3x</ThemedText> suffixes to provide files for
-          different screen densities.
+          different screen densities
         </ThemedText>
-        <Image 
-          source={require('@/assets/images/react-logo.png')} 
-          style={styles.image} 
-        />
+        <Image source={require('@/assets/images/react-logo.png')} style={{ alignSelf: 'center' }} />
         <ExternalLink href="https://reactnative.dev/docs/images">
           <ThemedText type="link">Learn more</ThemedText>
         </ExternalLink>
       </Collapsible>
-
       <Collapsible title="Custom fonts">
         <ThemedText>
           Open <ThemedText type="defaultSemiBold">app/_layout.tsx</ThemedText> to see how to load{' '}
@@ -70,7 +58,6 @@ export default function TabTwoScreen() {
           <ThemedText type="link">Learn more</ThemedText>
         </ExternalLink>
       </Collapsible>
-
       <Collapsible title="Light and dark mode components">
         <ThemedText>
           This template has light and dark mode support. The{' '}
@@ -81,7 +68,6 @@ export default function TabTwoScreen() {
           <ThemedText type="link">Learn more</ThemedText>
         </ExternalLink>
       </Collapsible>
-
       <Collapsible title="Animations">
         <ThemedText>
           This template includes an example of an animated component. The{' '}
@@ -98,43 +84,19 @@ export default function TabTwoScreen() {
           ),
         })}
       </Collapsible>
-
-      {/* Add the "Get Started" Button here */}
-      <TouchableOpacity style={styles.getStartedButton} onPress={() => {/* Add your navigation or action here */}}>
-        <ThemedText style={styles.buttonText}>Scan</ThemedText>
-      </TouchableOpacity>
     </ParallaxScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   headerImage: {
-    height: 200,
-    width: 360, // Adjust to your desired height
-    alignSelf: 'center',
-    marginTop: 30,
-  },
-  image: {
-    width: '80%', // Set width to 80% for responsiveness
-    height: undefined, // Allow height to be calculated based on aspect ratio
-    aspectRatio: 1, // Maintain the aspect ratio
-    alignSelf: 'center',
-    marginVertical: 20, // Add vertical margin for spacing
+    color: '#808080',
+    bottom: -90,
+    left: -35,
+    position: 'absolute',
   },
   titleContainer: {
     flexDirection: 'row',
     gap: 8,
-  },
-  getStartedButton: {
-    backgroundColor: '#01F0D0', // Change to your desired button color
-    paddingVertical: 12,
-    paddingHorizontal: 24,
-    borderRadius: 5,
-    alignSelf: 'center',
-    marginTop: 20,
-  },
-  buttonText: {
-    color: '#FFFFFF', // Change text color if needed
-    fontSize: 16,
   },
 });

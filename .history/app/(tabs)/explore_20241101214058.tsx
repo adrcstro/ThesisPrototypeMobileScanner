@@ -12,7 +12,7 @@ export default function TabTwoScreen() {
       headerBackgroundColor={{ light: '#ffffff', dark: '#ffffff' }}
       headerImage={
         <Image
-          source={require('@/assets/images/Plotwise.png')} // Replace with your image path
+          source={require('@/assets/images/header-image.png')} // Replace with your image path
           style={styles.headerImage}
         />
       }
@@ -50,10 +50,7 @@ export default function TabTwoScreen() {
           <ThemedText type="defaultSemiBold">@3x</ThemedText> suffixes to provide files for
           different screen densities.
         </ThemedText>
-        <Image 
-          source={require('@/assets/images/react-logo.png')} 
-          style={styles.image} 
-        />
+        <Image source={require('@/assets/images/react-logo.png')} style={{ alignSelf: 'center' }} />
         <ExternalLink href="https://reactnative.dev/docs/images">
           <ThemedText type="link">Learn more</ThemedText>
         </ExternalLink>
@@ -109,17 +106,10 @@ export default function TabTwoScreen() {
 
 const styles = StyleSheet.create({
   headerImage: {
-    height: 200,
-    width: 360, // Adjust to your desired height
-    alignSelf: 'center',
-    marginTop: 30,
-  },
-  image: {
-    width: '80%', // Set width to 80% for responsiveness
-    height: undefined, // Allow height to be calculated based on aspect ratio
-    aspectRatio: 1, // Maintain the aspect ratio
-    alignSelf: 'center',
-    marginVertical: 20, // Add vertical margin for spacing
+    width: 310, // Adjust to your desired width
+    height: 310, // Adjust to your desired height
+    alignSelf: 'center', // Center the image
+    marginTop: 20,
   },
   titleContainer: {
     flexDirection: 'row',

@@ -72,8 +72,7 @@ export default function HomeScreen() {
         onMomentumScrollEnd={handleScroll}
         renderItem={({ item }) => <Step {...item} />}
         keyExtractor={(item, index) => index.toString()}
-        snapToAlignment="center" // Ensure snapping is aligned to the center
-        snapToInterval={Dimensions.get('window').width} // Snap to the width of the screen
+        contentContainerStyle={styles.carouselContainer} // Add style here
       />
 
       {/* Navigation Dots */}
@@ -117,10 +116,14 @@ const styles = StyleSheet.create({
   descriptionContainer: {
     marginBottom: 16,
   },
+  carouselContainer: {
+    paddingHorizontal: 8, // Adjusted to reduce space between steps
+  },
   stepContainer: {
     width: Dimensions.get('window').width,
+    marginBottom: 16,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center', // Center content vertically
   },
   stepImage: {
     height: 150,

@@ -12,7 +12,7 @@ export default function TabTwoScreen() {
       headerBackgroundColor={{ light: '#ffffff', dark: '#ffffff' }}
       headerImage={
         <Image
-          source={require('@/assets/images/Plotwise.png')} // Replace with your image path
+          source={require('@/assets/images/WelcomeScreen.png')} // Replace with your image path
           style={styles.headerImage}
         />
       }
@@ -109,10 +109,8 @@ export default function TabTwoScreen() {
 
 const styles = StyleSheet.create({
   headerImage: {
-    height: 200,
-    width: 360, // Adjust to your desired height
-    alignSelf: 'center',
-    marginTop: 30,
+    height: 178,
+    width: 300,
   },
   image: {
     width: '80%', // Set width to 80% for responsiveness

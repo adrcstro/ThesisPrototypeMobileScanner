@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Image, StyleSheet, View, FlatList, Animated, Dimensions, TouchableOpacity, NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
+import { Image, StyleSheet, View, FlatList, Animated, Dimensions, TouchableOpacity } from 'react-native';
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
@@ -33,7 +33,7 @@ export default function HomeScreen() {
   const scrollX = useRef(new Animated.Value(0)).current;
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+  const handleScroll = (event) => {
     const index = Math.round(event.nativeEvent.contentOffset.x / Dimensions.get('window').width);
     setCurrentIndex(index);
   };
@@ -72,14 +72,13 @@ export default function HomeScreen() {
         onMomentumScrollEnd={handleScroll}
         renderItem={({ item }) => <Step {...item} />}
         keyExtractor={(item, index) => index.toString()}
-        snapToAlignment="center" // Ensure snapping is aligned to the center
-        snapToInterval={Dimensions.get('window').width} // Snap to the width of the screen
       />
 
       {/* Navigation Dots */}
       <View style={styles.pagination}>
         {steps.map((_, index) => (
           <TouchableOpacity key={index} onPress={() => {
+            // Scroll to the selected index
             scrollX.setValue(index * Dimensions.get('window').width);
           }}>
             <View
@@ -119,8 +118,9 @@ const styles = StyleSheet.create({
   },
   stepContainer: {
     width: Dimensions.get('window').width,
+    gap: 8,
+    marginBottom: 16,
     alignItems: 'center',
-    justifyContent: 'center',
   },
   stepImage: {
     height: 150,
@@ -132,8 +132,6 @@ const styles = StyleSheet.create({
   },
   stepDescription: {
     textAlign: 'center',
-    maxWidth: '80%', // Set maximum width for description
-    paddingHorizontal: 8, // Optional: Add padding for better readability
   },
   reactLogo: {
     height: 178,
@@ -152,6 +150,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 4,
   },
   activeDot: {
-    backgroundColor: '#01F0D0',
+    backgroundColor: '#01F0D0', // Active dot color
   },
 });

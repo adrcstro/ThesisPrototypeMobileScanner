@@ -31,10 +31,16 @@ const steps: StepProps[] = [
 
 export default function HomeScreen() {
   const scrollX = useRef(new Animated.Value(0)).current;
+  const flatListRef = useRef<FlatList>(null); // Reference to FlatList
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const index = Math.round(event.nativeEvent.contentOffset.x / Dimensions.get('window').width);
+    setCurrentIndex(index);
+  };
+
+  const scrollToIndex = (index: number) => {
+    flatListRef.current?.scrollToIndex({ index, animated: true });
     setCurrentIndex(index);
   };
 
@@ -61,6 +67,7 @@ export default function HomeScreen() {
 
       {/* Carousel Section */}
       <FlatList
+        ref={flatListRef} // Set FlatList reference
         data={steps}
         horizontal
         pagingEnabled
@@ -72,16 +79,14 @@ export default function HomeScreen() {
         onMomentumScrollEnd={handleScroll}
         renderItem={({ item }) => <Step {...item} />}
         keyExtractor={(item, index) => index.toString()}
-        snapToAlignment="center" // Ensure snapping is aligned to the center
-        snapToInterval={Dimensions.get('window').width} // Snap to the width of the screen
+        snapToAlignment="center"
+        snapToInterval={Dimensions.get('window').width}
       />
 
       {/* Navigation Dots */}
       <View style={styles.pagination}>
         {steps.map((_, index) => (
-          <TouchableOpacity key={index} onPress={() => {
-            scrollX.setValue(index * Dimensions.get('window').width);
-          }}>
+          <TouchableOpacity key={index} onPress={() => scrollToIndex(index)}>
             <View
               style={[
                 styles.dot,
@@ -132,8 +137,8 @@ const styles = StyleSheet.create({
   },
   stepDescription: {
     textAlign: 'center',
-    maxWidth: '80%', // Set maximum width for description
-    paddingHorizontal: 8, // Optional: Add padding for better readability
+    maxWidth: '80%',
+    paddingHorizontal: 8,
   },
   reactLogo: {
     height: 178,

@@ -42,7 +42,7 @@ export default function HomeScreen() {
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#FFFFFF', dark: '#FFFFFF' }}
       headerImage={
-        <View style={styles.imageContainer}> 
+        <View style={styles.imageContainer}>
           <Image
             source={require('@/assets/images/WelcomeScreen.png')}
             style={styles.reactLogo}
@@ -72,8 +72,7 @@ export default function HomeScreen() {
         onMomentumScrollEnd={handleScroll}
         renderItem={({ item }) => <Step {...item} />}
         keyExtractor={(item, index) => index.toString()}
-        snapToAlignment="center" // Ensure snapping is aligned to the center
-        snapToInterval={Dimensions.get('window').width} // Snap to the width of the screen
+        contentContainerStyle={styles.carouselContainer} // Add this line
       />
 
       {/* Navigation Dots */}
@@ -119,8 +118,10 @@ const styles = StyleSheet.create({
   },
   stepContainer: {
     width: Dimensions.get('window').width,
+    gap: 8,
+    marginBottom: 16,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center', // Center items vertically
   },
   stepImage: {
     height: 150,
@@ -132,8 +133,6 @@ const styles = StyleSheet.create({
   },
   stepDescription: {
     textAlign: 'center',
-    maxWidth: '80%', // Set maximum width for description
-    paddingHorizontal: 8, // Optional: Add padding for better readability
   },
   reactLogo: {
     height: 178,
@@ -153,5 +152,8 @@ const styles = StyleSheet.create({
   },
   activeDot: {
     backgroundColor: '#01F0D0',
+  },
+  carouselContainer: {
+    alignItems: 'center', // Center carousel items
   },
 });

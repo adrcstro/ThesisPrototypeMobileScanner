@@ -109,8 +109,8 @@ export default function TabTwoScreen() {
 
 const styles = StyleSheet.create({
   headerImage: {
-    height: 200,
-    width: 360, // Adjust to your desired height
+    height: 178,
+    width: 300, // Adjust to your desired height
     alignSelf: 'center',
     marginTop: 30,
   },

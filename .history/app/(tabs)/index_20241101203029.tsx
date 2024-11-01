@@ -14,17 +14,29 @@ interface StepProps {
 const steps: StepProps[] = [
   {
     title: "Step 1: Capture an Image",
-    description: "Open the SpotWise app and use your smartphone's camera to take a clear picture of the affected skin area. Ensure good lighting for optimal image quality.",
+    description: `
+      - Open the SpotWise app.
+      - Use your smartphone's camera to take a clear picture of the affected skin area.
+      - Ensure good lighting for optimal image quality.
+    `,
     imageSource: require('@/assets/images/Step1.png'),
   },
   {
     title: "Step 2: Analyze the Scan",
-    description: "After capturing the image, SpotWise's AI algorithms will analyze the photo and identify potential skin diseases. This process takes just a few seconds.",
+    description: `
+      - Capture the image of the affected area.
+      - SpotWise's AI analyzes the photo to identify potential skin diseases.
+      - This process completes in a few seconds.
+    `,
     imageSource: require('@/assets/images/Step2.png'),
   },
   {
     title: "Step 3: Analysis Result",
-    description: "Once the analysis is complete, you'll receive detailed information about the identified condition, along with personalized recommendations and next steps for care or treatment.",
+    description: `
+      - Receive detailed information on the identified condition.
+      - View personalized recommendations for care and next steps.
+      - Follow guidance for treatment if necessary.
+    `,
     imageSource: require('@/assets/images/Step3.png'),
   },
 ];
